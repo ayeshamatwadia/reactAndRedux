@@ -1,14 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { searchRobots } from './reducers' 
 import "./index.css";
 import App from "./containers/App";
-
 import * as serviceWorker from "./serviceWorker";
 import "tachyons";
 
+// creating the state/store
+const store = createStore(searchRobots);
+
+// we don't want to have to pass the state down as props
+// all the time so we wrap the app component in the Provider
+// component and it takes care of passing the store down
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={ store }>
+      <App />
+    </Provider>  
   </React.StrictMode>,
   document.getElementById("root")
 );
