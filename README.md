@@ -12,3 +12,10 @@ https://reactjs.org/docs/handling-events.html
 
 # What is font face
 https://css-tricks.com/snippets/css/using-font-face/
+
+# lifecycle hooks
+https://reactjs.org/docs/react-component.html
+
+# fetch API
+https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+

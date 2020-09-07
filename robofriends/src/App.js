@@ -1,7 +1,6 @@
 import React from "react";
 import CardList from "./CardList";
 import SearchBox from "./SearchBox";
-import { robots } from "./robots";
 import './App.css';
 
 // since we need state we have to change this from
@@ -14,9 +13,16 @@ class App extends React.Component {
     this.state = {
       // At this point we don't need the robots in state
       // but we will later on
-      robots: robots,
+      robots: [],
       searchField: "",
     };
+  }
+
+  componentDidMount() {
+    console.log('when refreshing page this gets called')
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => response.json())
+    .then(users => this.setState({robots: users}))
   }
 
   //   make sure to use arrow functions when creating your own
@@ -35,14 +41,18 @@ class App extends React.Component {
         .toLowerCase()
         .includes(this.state.searchField.toLowerCase());
     });
+    if(this.state.robots.length === 0) {
+      return (<h1>Loading</h1>)
+    } else{
+      return (
+        <div className="tc">
+          <h1 className='f1'>RoboFriends</h1>
+          <SearchBox searchChange={this.onSearchChange} />
+          <CardList robots={filteredRobots} />
+        </div>
+      );
+    }
 
-    return (
-      <div className="tc">
-        <h1 className='f1'>RoboFriends</h1>
-        <SearchBox searchChange={this.onSearchChange} />
-        <CardList robots={filteredRobots} />
-      </div>
-    );
   }
 }
 
