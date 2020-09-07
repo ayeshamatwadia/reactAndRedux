@@ -9,3 +9,6 @@ https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b
 
 # This binding in react - Event Handling
 https://reactjs.org/docs/handling-events.html
+
+# What is font face
+https://css-tricks.com/snippets/css/using-font-face/
